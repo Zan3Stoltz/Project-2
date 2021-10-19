@@ -18,7 +18,7 @@
 }
 
 .post_header{ /*31:00*/
-    display: flex;
+    display:flex;
     align-items: center;
     padding: 20px;
 }

@@ -14,7 +14,7 @@ function App()
     caption : "Whoop whoop",
     imageUrl: "https://www.vieravet.com/sites/default/files/styles/large/public/golden-retriever-dog-breed-info.jpg?itok=LCRMRkum"
   }
-  ])
+  ]);
 
   return (
     <div className="app">
@@ -25,13 +25,16 @@ function App()
           alt=""
         />
       </div>
+
       <h1>🍀ZIPPED🍀</h1>
 
       {
         posts.map(post => (
           <Post username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>        
           ))
-      } </div>
+      } 
+      
+      </div>
   );
 }
 

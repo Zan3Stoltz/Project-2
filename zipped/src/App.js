@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect } from 'react';
 import './App.css';
 import Post from './Post';
+import {db} from './firebase';
 
 function App() 
 {
@@ -15,6 +16,8 @@ function App()
     imageUrl: "https://www.vieravet.com/sites/default/files/styles/large/public/golden-retriever-dog-breed-info.jpg?itok=LCRMRkum"
   }
   ]);
+
+  useEffect(() => {db.collection('posts')},[]);
 
   return (
     <div className="app">

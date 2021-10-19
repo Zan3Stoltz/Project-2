@@ -4,6 +4,8 @@
 
 .app{
   background-color: rgb(196, 253, 196);
+  padding: 20px;
+  border-bottom: 1px solid darkgreen;
 }
 
 .app_header{

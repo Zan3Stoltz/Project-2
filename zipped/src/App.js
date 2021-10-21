@@ -1,23 +1,17 @@
 import React, {useState, useEffect } from 'react';
 import './App.css';
 import Post from './Post';
-import {db} from './firebase';
+import { db } from './firebase';
 
 function App() 
 {
-  const [posts, setPosts] = useState([
-    {
-      username : "ZanBannan",
-      caption : "Whoop whoop",
-      imageUrl: "https://www.vieravet.com/sites/default/files/styles/large/public/golden-retriever-dog-breed-info.jpg?itok=LCRMRkum"
-    },
-    {username : "ZanBannan",
-    caption : "Whoop whoop",
-    imageUrl: "https://www.vieravet.com/sites/default/files/styles/large/public/golden-retriever-dog-breed-info.jpg?itok=LCRMRkum"
-  }
-  ]);
+  const [posts, setPosts] = useState([]);
 
-  useEffect(() => {db.collection('posts')},[]);
+  useEffect(() => {
+    db.collection('posts').onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map(doc => doc.data()))
+    })
+  },[]);
 
   return (
     <div className="app">

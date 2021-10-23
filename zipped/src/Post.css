@@ -6,7 +6,7 @@
     padding: 10px;
 }
 
-.post_image{
+.post_image {
     width: 400px;
     height: 400px;
     object-fit: cover;
@@ -14,18 +14,19 @@
     border-bottom: 1pc rgb(80, 155, 80);
 }
 
-.post_text{
+.post_text {
     font-weight: normal;
     padding: 20px;
 }
 
-.post_header{ /*31:00*/
+.post_header {
+    /*31:00*/
     display: inline-flex;
     width: 100%;
     align-items: center;
     padding: 20px;
 }
 
-.post_avatar{
+.post_avatar {
     margin-right: 10px;
 }

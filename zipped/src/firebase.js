@@ -1,12 +1,14 @@
-import firebase from "firebase/compat/app";
+import firebase from "firebase/compat";
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
-import "firebase/compat/storage"
+import "firebase/compat/storage";
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
   const firebaseApp = firebase.initializeApp({
     apiKey: "AIzaSyBEf33RUI1CxTFmTgBvebvY8IsRq1HaOa0",
     authDomain: "zipped-d044f.firebaseapp.com",
-    databaseURL: "https://zipped-d044f.firebaseio.com",
+    //databaseURL: "https://zipped.firebaseio.com",
     projectId: "zipped-d044f",
     storageBucket: "zipped-d044f.appspot.com",
     messagingSenderId: "646946111834",

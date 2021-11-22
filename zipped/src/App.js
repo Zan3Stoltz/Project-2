@@ -5,7 +5,8 @@ import './firebase';
 import { auth, db } from './firebase';
 import { Button, Input, makeStyles, Modal } from '@material-ui/core';
 import { mergeClasses } from '@material-ui/styles';
-
+import ImageUpload from './ImageUpload';
+import InstagramEmbed from 'react-instagram-embed';
 
 function getModalStyle() {
   //const top = '50%';
@@ -44,9 +45,23 @@ function App()
   const [password, setPassword] = useState('');
   const [user,setUser] = useState(null);
 
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        console.log(authUser);
+        setUser(authUser);
+      } else {
+        setUser(null);
+      }
+    })
+
+    return () => {
+      unsubscribe();
+    }
+  }, [user, username]);
 
   useEffect(() => {
-    db.collection('posts').onSnapshot(snapshot => {
+    db.collection('posts').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
       setPosts(snapshot.docs.map(doc => ({
         id: doc.id, 
         post: doc.data()
@@ -75,6 +90,11 @@ function App()
   return (
     <div className="app">
 
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName}/>
+      ): (
+        <h3>Login to upload</h3>
+      )}
       <Modal
         open={openSignIn}
         onClose={() => setOpenSignIn(false)}
@@ -144,9 +164,7 @@ function App()
           alt=""
 
         />
-      </div>
-
-      {user ? (
+        {user ? (
         <Button onClick={() => auth.signOut()}>Logout</Button>
       ): (
         
@@ -156,13 +174,19 @@ function App()
       <Button onClick={() => setOpen(true)}>Sign Up</Button>
       </div>
       )}
-      <h1>🍀ZIPPED🍀</h1>
+      </div>
 
+      <div className='app_posts'>
       {
         posts.map(({id, post}) => (
           <Post key={id} username={post.username} caption={post.caption} imageUrl={post.imageUrl}/>        
           ))
       } 
+      </div>
+      
+      <h1>🍀ZIPPED🍀</h1>
+
+     
       
     </div>
   );

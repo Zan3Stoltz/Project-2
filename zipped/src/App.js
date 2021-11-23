@@ -1,6 +1,6 @@
 import React, {useState, useEffect } from 'react';
 import './App.css';
-import Post from './Post';
+import Post from './Post.js';
 import './firebase';
 import { auth, db } from './firebase';
 import { Button, Input, makeStyles, Modal } from '@material-ui/core';
@@ -93,7 +93,7 @@ function App()
       {user?.displayName ? (
         <ImageUpload username={user.displayName}/>
       ): (
-        <h3>Login to upload</h3>
+        <ImageUpload username={user.displayName}/>
       )}
       <Modal
         open={openSignIn}
@@ -164,6 +164,7 @@ function App()
           alt=""
 
         />
+        
         {user ? (
         <Button onClick={() => auth.signOut()}>Logout</Button>
       ): (
@@ -176,6 +177,7 @@ function App()
       )}
       </div>
 
+      
       <div className='app_posts'>
       {
         posts.map(({id, post}) => (
@@ -186,9 +188,13 @@ function App()
       
       <h1>🍀ZIPPED🍀</h1>
 
-     
+      <Post username="Z3Stoltz" caption="Taken by Jess @ HUis Republiek Formal DIne" imageUrl="https://cdn.pixabay.com/photo/2015/04/19/08/32/marguerite-729510__480.jpg"/>
       
+      <Post username="Zanbannan" caption="I need one!" imageUrl="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=640:*"/>
+      <Post username="BanannaFOFANNA" caption="Teamwork" imageUrl="https://www.rd.com/wp-content/uploads/2021/03/GettyImages-1133605325-scaled-e1617227898456.jpg"/>
+
     </div>
+    
   );
 }
 

@@ -1,14 +1,30 @@
-*{
+* {
   margin: 0;
 }
 
-.app{
+.app {
   background-color: rgb(196, 253, 196);
+  padding: 20px;
+  border-bottom: 1px solid darkgreen;
 }
 
-.app_header{
+.app_posts{
+  padding: 20px;
+}
+.app_header {
   background-color: #FFFFFF;
   padding: 20px;
   border-bottom: 1px solid darkgreen;
   object-fit: contain;
+  display: flex;
+  justify-content: space-between;
+}
+
+.app_headerImage{
+  object-fit: contain;
+}
+
+.app_signUp {
+  display: flex;
+  flex-direction: column;
 }
